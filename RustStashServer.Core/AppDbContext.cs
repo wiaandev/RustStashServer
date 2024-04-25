@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using RustStashServer.Core.Entities.Auth;
 
 namespace RustStashServer.Core
@@ -15,6 +14,10 @@ namespace RustStashServer.Core
                 //var sessionContext = this.GetService<ISessionContext>
             };
         }
+
+        // setting tables
+        public DbSet<User> Users => this.Set<User>();
+
 
         // protected override void OnModelCreating(ModelBuilder builder)
         // {
