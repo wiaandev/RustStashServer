@@ -1,26 +1,29 @@
-// <copyright file="IServiceCollectionExtensions.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+using RustStashServer.Core.Services;
 
-
-namespace RustStashServer.Core;
-using Microsoft.EntityFrameworkCore;
-
-public static class IServiceCollectionExtensions
+namespace RustStashServer.Core
 {
-    public static IServiceCollection AddDb(this IServiceCollection services, IConfiguration configuration)
+    using Microsoft.EntityFrameworkCore;
+
+    public static class IServiceCollectionExtensions
     {
-        services.AddPooledDbContextFactory<AppDbContext>(
-            options =>
+        public static IServiceCollection AddDb(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseNpgsql(configuration.GetConnectionString("WebApiDatabase"));
+                options.EnableDetailedErrors();
             });
 
-        services.AddDbContext<AppDbContext>();
-        return services;
+            services.AddDbContext<AppDbContext>();
+            return services;
+        }
+
+        public static IServiceCollection AddCoreServices(this IServiceCollection services)
+        {
+            services.AddScoped<UserService>();
+
+            return services;
+        }
     }
 
-    //public static IServiceCollection AddCoreServices(this IServiceCollection services)
-    //{
-    //    services.AddScoped
-    //}
 }
