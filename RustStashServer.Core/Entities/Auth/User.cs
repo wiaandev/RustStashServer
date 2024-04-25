@@ -12,12 +12,10 @@ namespace RustStashServer.Core.Entities.Auth
         public string Username { get; set; } = null!;
 
         public string Email { get; set; } = null!;
-
-        public int? ProfilePictureId { get; set; }
-
-        [ForeignKey("ProfilePictureId")]
-        public ProfilePicture? ProfileImage { get; set; }
-
+        
+        [ForeignKey(nameof(ProfilePicture))]
+        public int ProfileImage { get; set; }
+        
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }
 

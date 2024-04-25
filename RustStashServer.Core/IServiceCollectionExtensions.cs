@@ -1,6 +1,6 @@
 // <copyright file="IServiceCollectionExtensions.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
+
 
 namespace RustStashServer.Core;
 using Microsoft.EntityFrameworkCore;
