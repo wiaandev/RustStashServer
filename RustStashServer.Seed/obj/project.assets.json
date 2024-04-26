@@ -4270,6 +4270,46 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "RustStashServer.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Azure.Extensions.AspNetCore.Configuration.Secrets": "1.3.1",
+          "Azure.Security.KeyVault.Secrets": "4.6.0",
+          "HotChocolate.Abstractions": "13.9.0",
+          "HotChocolate.AspNetCore": "13.9.0",
+          "HotChocolate.AspNetCore.Authorization": "13.9.0",
+          "HotChocolate.Data": "13.9.0",
+          "HotChocolate.Data.EntityFramework": "13.9.0",
+          "HotChocolate.Types": "13.9.0",
+          "HotChocolate.Types.Analyzers": "13.9.0",
+          "HotChocolate.Types.CursorPagination": "13.9.0",
+          "HotChocolate.Types.Scalars.Upload": "13.9.0",
+          "MailKit": "4.5.0",
+          "Microsoft.AspNetCore.Authentication.Google": "8.0.4",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.4",
+          "Microsoft.AspNetCore.SpaProxy": "8.0.4",
+          "Microsoft.Azure.Functions.Worker": "1.22.0",
+          "Microsoft.Azure.Functions.Worker.Extensions.Timer": "4.3.0",
+          "Microsoft.EntityFrameworkCore": "8.0.4",
+          "Microsoft.Extensions.Configuration": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection": "8.0.0",
+          "Microsoft.NET.Sdk.Functions": "4.3.0",
+          "MimeKit": "4.5.0",
+          "Newtonsoft.Json": "13.0.3",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.2",
+          "PreMailer.Net": "2.5.0"
+        },
+        "compile": {
+          "bin/placeholder/RustStashServer.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RustStashServer.Core.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -11727,6 +11767,11 @@
         "yarp.reverseproxy.2.0.1.nupkg.sha512",
         "yarp.reverseproxy.nuspec"
       ]
+    },
+    "RustStashServer.Core/1.0.0": {
+      "type": "project",
+      "path": "../RustStashServer.Core/RustStashServer.Core.csproj",
+      "msbuildProject": "../RustStashServer.Core/RustStashServer.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -11757,6 +11802,7 @@
       "Newtonsoft.Json >= 13.0.3",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.2",
       "PreMailer.Net >= 2.5.0",
+      "RustStashServer.Core >= 1.0.0",
       "StyleCop.Analyzers >= 1.0.2"
     ]
   },
@@ -11784,7 +11830,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj": {
+              "projectPath": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
