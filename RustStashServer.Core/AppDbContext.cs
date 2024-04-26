@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using RustStashServer.Core.Entities;
 using RustStashServer.Core.Entities.Auth;
@@ -6,7 +7,7 @@ using RustStashServer.Core.Entities.Auth;
 
 namespace RustStashServer.Core
 {
-    public class AppDbContext : IdentityDbContext<User>
+    public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public AppDbContext(DbContextOptions options)
             : base(options)

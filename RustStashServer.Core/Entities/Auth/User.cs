@@ -4,11 +4,11 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using Microsoft.AspNetCore.Identity;
 
-    public class User : IdentityUser
+    public class User : IdentityUser<int>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
         public string Username { get; set; } = null!;
 
