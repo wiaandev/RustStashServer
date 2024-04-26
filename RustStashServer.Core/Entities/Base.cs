@@ -13,6 +13,8 @@ public class Base
 
     public string? Longitude { get; set; } = null!;
 
-    [ForeignKey(nameof(UserStash))]
-    public List<int> UserStashId { get; set; } = null!;
+    [ForeignKey("UserStashId")]
+    public UserStash UserStash { get; set; } = null!;
+
+    public int UserStashId { get; set; }
 }

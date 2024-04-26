@@ -9,7 +9,9 @@ public class RecipeIngredient
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int RecipeIngredientId { get; set; }
 
-    [ForeignKey(nameof(Material))]
+    [ForeignKey("MaterialId")]
+    public Material? Material { get; set; } = null!;
+
     public int MaterialId { get; set; }
 
     public int RequiredQuantity { get; set; }

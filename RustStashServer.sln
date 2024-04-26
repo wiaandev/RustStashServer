@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RustStashServer.GraphQL", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RustStashServer.Seed", "RustStashServer.Seed\RustStashServer.Seed.csproj", "{8EE10DF7-0B2E-4875-8D7E-FA8A4E2FB23C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RustStashServer.Web", "RustStashServer.Web\RustStashServer.Web.csproj", "{5985BB88-BBC8-439C-98C7-BEC553ABCF3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8EE10DF7-0B2E-4875-8D7E-FA8A4E2FB23C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EE10DF7-0B2E-4875-8D7E-FA8A4E2FB23C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EE10DF7-0B2E-4875-8D7E-FA8A4E2FB23C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5985BB88-BBC8-439C-98C7-BEC553ABCF3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5985BB88-BBC8-439C-98C7-BEC553ABCF3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5985BB88-BBC8-439C-98C7-BEC553ABCF3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5985BB88-BBC8-439C-98C7-BEC553ABCF3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

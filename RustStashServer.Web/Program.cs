@@ -1,5 +1,4 @@
 using HotChocolate.AspNetCore;
-using Microsoft.EntityFrameworkCore;
 using RustStashServer.Core;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,12 +11,6 @@ if (builder.Environment.IsProduction())
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddHealthChecks();
-
-builder.Services.AddDbContext<AppDbContext>(opts =>
-{
-    IConfiguration config = builder.Configuration;
-    opts.UseNpgsql(config.GetConnectionString("WebApiDatabase"));
-});
 
 var app = builder.Build();
 
@@ -35,7 +28,7 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-// app.UseAuthorization();
+app.UseAuthorization();
 
 app.MapControllers();
 app.MapGraphQL().WithOptions(new GraphQLServerOptions

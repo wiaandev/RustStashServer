@@ -11,14 +11,20 @@ public class UserStash
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int UserStashId { get; set; }
 
-    [ForeignKey(nameof(Material))]
+    [ForeignKey("MaterialId")]
+    public Material? Material { get; set; } = null;
+
     public int MaterialId { get; set; }
 
-    [ForeignKey(nameof(User))]
+    [ForeignKey("UserId")]
+    public User? User { get; set; } = null;
+
     public int UserId { get; set; }
 
     public int? Quantity { get; set; } = null!;
 
-    [ForeignKey(nameof(Base))]
+    [ForeignKey("BaseId")]
+    public Base? Base { get; set; } = null!;
+
     public int BaseId { get; set; }
 }

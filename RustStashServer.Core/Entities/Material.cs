@@ -10,16 +10,17 @@ public class Material
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int MaterialId { get; set; }
 
-    [ForeignKey(nameof(Image))]
-    public int ImageId { get; set; }
+    [ForeignKey("MaterialImageId")]
+    public Image? Image { get; set; } = null!;
+
+    public int MaterialImageId { get; set; }
 
     public string? MaterialDescription { get; set; } = null!;
 
-    [ForeignKey(nameof(Category))]
+    [ForeignKey("CategoryId")]
+    public Category? Category { get; set; } = null!;
+
     public int CategoryId { get; set; }
 
     public bool MaterialIsCraftable { get; set; }
-
-    [ForeignKey(nameof(Material))]
-    public List<int>? ItemsUsedToCraftId { get; set; }
 }
