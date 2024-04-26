@@ -1,10 +1,10 @@
+namespace RustStashServer.GraphQL.Mutations;
+
 using HotChocolate.Authorization;
 using RustStashServer.Core;
 using RustStashServer.Core.Services;
 using RustStashServer.Core.Services.Inputs;
 using RustStashServer.GraphQL.Mutations.Payloads;
-
-namespace RustStashServer.GraphQL.Mutations;
 
 [MutationType]
 public class UserMutations
