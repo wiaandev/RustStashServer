@@ -42,4 +42,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RustStashServer.Core\RustStashServer.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PlzC2tB+7Z8hhU6QofAcJxXJX+pNdjsfX+cdRRsuGuo/PLGXSGRcv242zASSLBY4iRVRo5NEGTPVsLNrXSE7Ag==",
+  "dgSpecHash": "vSfD2ZsBotmGDRm4ssEjUR2QYVIudJR357tlyXe2Dy4NrL9O/vQMhNlpCNhp/oxFGTNw7XyopCIoInrm6LveFQ==",
   "success": true,
   "projectFilePath": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.GraphQL/RustStashServer.GraphQL.csproj",
   "expectedPackageFiles": [

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RustStashServer.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f68ae1b8be55c114eb2175feddc1f468a1e38d70")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54cbc959f83fb5e151c7c790aa3e98137cc69750")]
 [assembly: System.Reflection.AssemblyProductAttribute("RustStashServer.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RustStashServer.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
