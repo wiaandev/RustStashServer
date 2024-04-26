@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MI9GkOPJndOdGQXSkG2tSjRt0yk6dBoHuGrJXGV44N/aRuPzT+W2tNfvGVpy4XPkHrJiv2IjG0LByG8APTM7rg==",
+  "dgSpecHash": "E/yWiAGyYMqebYxxXT7MO8rexueHpKJ+jEOTisbkQVJ4eispd5hJHcygiostS16iIJeAaFdQFwHUEsRc2UZsiA==",
   "success": true,
   "projectFilePath": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj",
   "expectedPackageFiles": [
