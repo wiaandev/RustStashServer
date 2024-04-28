@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vSfD2ZsBotmGDRm4ssEjUR2QYVIudJR357tlyXe2Dy4NrL9O/vQMhNlpCNhp/oxFGTNw7XyopCIoInrm6LveFQ==",
+  "dgSpecHash": "l7I61U3gyIF2/gSvemza/acXAVMrCwsz/CfTO8sA2KxL7MlAhmgphKFvyXc26i78MgbyiysLIanPsT8888QmSg==",
   "success": true,
   "projectFilePath": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.GraphQL/RustStashServer.GraphQL.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "/Users/wiaanduvenhage/.nuget/packages/azure.core/1.37.0/azure.core.1.37.0.nupkg.sha512",
     "/Users/wiaanduvenhage/.nuget/packages/azure.extensions.aspnetcore.configuration.secrets/1.3.1/azure.extensions.aspnetcore.configuration.secrets.1.3.1.nupkg.sha512",
     "/Users/wiaanduvenhage/.nuget/packages/azure.security.keyvault.secrets/4.6.0/azure.security.keyvault.secrets.4.6.0.nupkg.sha512",
+    "/Users/wiaanduvenhage/.nuget/packages/azure.storage.blobs/12.19.1/azure.storage.blobs.12.19.1.nupkg.sha512",
+    "/Users/wiaanduvenhage/.nuget/packages/azure.storage.common/12.18.1/azure.storage.common.12.18.1.nupkg.sha512",
     "/Users/wiaanduvenhage/.nuget/packages/bananacakepop.middleware/13.0.0/bananacakepop.middleware.13.0.0.nupkg.sha512",
     "/Users/wiaanduvenhage/.nuget/packages/bouncycastle.cryptography/2.3.0/bouncycastle.cryptography.2.3.0.nupkg.sha512",
     "/Users/wiaanduvenhage/.nuget/packages/google.protobuf/3.25.2/google.protobuf.3.25.2.nupkg.sha512",

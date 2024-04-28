@@ -20,7 +20,7 @@ namespace RustStashServer.Core.Services
         public IQueryable<User> GetUsers(AppDbContext dbContext)
         {
             return dbContext.Users.AsQueryable();
-        } 
+        }
 
         public async Task<User> Create(AppDbContext dbContext, CreateUserInput input)
         {
@@ -62,5 +62,7 @@ namespace RustStashServer.Core.Services
             await dbContext.SaveChangesAsync();
             return user;
         }
+        
+        
     }
 }

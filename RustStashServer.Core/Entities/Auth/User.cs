@@ -21,5 +21,9 @@
         public DateTime CreatedAt { get; set; }
 
         public DateTime? DateOfBirth { get; set; }
+
+        public bool Deleted { get; set; }
+
+        public int TotalItemsCrafted { get; set; }
     }
 

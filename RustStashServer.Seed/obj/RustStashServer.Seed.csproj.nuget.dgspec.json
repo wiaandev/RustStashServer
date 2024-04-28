@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[4.6.0, )"
             },
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.19.1, )"
+            },
             "HotChocolate.Abstractions": {
               "target": "Package",
               "version": "[13.9.0, )"
@@ -219,6 +223,10 @@
             "Azure.Security.KeyVault.Secrets": {
               "target": "Package",
               "version": "[4.6.0, )"
+            },
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.19.1, )"
             },
             "HotChocolate.Abstractions": {
               "target": "Package",
