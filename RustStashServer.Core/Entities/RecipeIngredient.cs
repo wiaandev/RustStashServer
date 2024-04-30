@@ -14,5 +14,8 @@ public class RecipeIngredient
 
     public int MaterialId { get; set; }
 
-    public int RequiredQuantity { get; set; }
+    [ForeignKey("RecipeId")]
+    public Recipe? Recipe { get; set; } = null!;
+
+    public int RecipeId { get; set; }
 }

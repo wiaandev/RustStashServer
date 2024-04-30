@@ -27,4 +27,9 @@ public class UserStash
     public Base? Base { get; set; } = null!;
 
     public int BaseId { get; set; }
+
+    [ForeignKey("ItemTypeId")]
+    public StashItemType? StashItemType { get; set; } = null!;
+
+    public int UserStashItemTypeId { get; set; }
 }

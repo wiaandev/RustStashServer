@@ -88,6 +88,19 @@ namespace RustStashServer.Core.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "StashItemType",
+                columns: table => new
+                {
+                    StashItemTypeId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    StashItemTypeName = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StashItemType", x => x.StashItemTypeId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -222,13 +235,69 @@ namespace RustStashServer.Core.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Bases",
+                columns: table => new
+                {
+                    BaseId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Latitude = table.Column<string>(type: "text", nullable: true),
+                    Longitude = table.Column<string>(type: "text", nullable: true),
+                    UserStashId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bases", x => x.BaseId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserStashes",
+                columns: table => new
+                {
+                    UserStashId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    MaterialId = table.Column<int>(type: "integer", nullable: false),
+                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    Quantity = table.Column<int>(type: "integer", nullable: true),
+                    BaseId = table.Column<int>(type: "integer", nullable: false),
+                    ItemTypeId = table.Column<int>(type: "integer", nullable: true),
+                    UserStashItemTypeId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserStashes", x => x.UserStashId);
+                    table.ForeignKey(
+                        name: "FK_UserStashes_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserStashes_Bases_BaseId",
+                        column: x => x.BaseId,
+                        principalTable: "Bases",
+                        principalColumn: "BaseId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserStashes_Materials_MaterialId",
+                        column: x => x.MaterialId,
+                        principalTable: "Materials",
+                        principalColumn: "MaterialId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserStashes_StashItemType_ItemTypeId",
+                        column: x => x.ItemTypeId,
+                        principalTable: "StashItemType",
+                        principalColumn: "StashItemTypeId");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RecipeIngredients",
                 columns: table => new
                 {
                     RecipeIngredientId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     MaterialId = table.Column<int>(type: "integer", nullable: false),
-                    RequiredQuantity = table.Column<int>(type: "integer", nullable: false)
+                    RecipeId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -274,55 +343,6 @@ namespace RustStashServer.Core.Migrations
                         column: x => x.RecipeIngredientId,
                         principalTable: "RecipeIngredients",
                         principalColumn: "RecipeIngredientId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Bases",
-                columns: table => new
-                {
-                    BaseId = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Latitude = table.Column<string>(type: "text", nullable: true),
-                    Longitude = table.Column<string>(type: "text", nullable: true),
-                    UserStashId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Bases", x => x.BaseId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserStashes",
-                columns: table => new
-                {
-                    UserStashId = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    MaterialId = table.Column<int>(type: "integer", nullable: false),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    Quantity = table.Column<int>(type: "integer", nullable: true),
-                    BaseId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserStashes", x => x.UserStashId);
-                    table.ForeignKey(
-                        name: "FK_UserStashes_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserStashes_Bases_BaseId",
-                        column: x => x.BaseId,
-                        principalTable: "Bases",
-                        principalColumn: "BaseId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserStashes_Materials_MaterialId",
-                        column: x => x.MaterialId,
-                        principalTable: "Materials",
-                        principalColumn: "MaterialId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -384,6 +404,11 @@ namespace RustStashServer.Core.Migrations
                 column: "MaterialId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RecipeIngredients_RecipeId",
+                table: "RecipeIngredients",
+                column: "RecipeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Recipes_CategoryId",
                 table: "Recipes",
                 column: "CategoryId");
@@ -404,6 +429,11 @@ namespace RustStashServer.Core.Migrations
                 column: "BaseId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_UserStashes_ItemTypeId",
+                table: "UserStashes",
+                column: "ItemTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserStashes_MaterialId",
                 table: "UserStashes",
                 column: "MaterialId");
@@ -420,6 +450,14 @@ namespace RustStashServer.Core.Migrations
                 principalTable: "UserStashes",
                 principalColumn: "UserStashId",
                 onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_RecipeIngredients_Recipes_RecipeId",
+                table: "RecipeIngredients",
+                column: "RecipeId",
+                principalTable: "Recipes",
+                principalColumn: "RecipeId",
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
@@ -432,6 +470,30 @@ namespace RustStashServer.Core.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_Bases_UserStashes_UserStashId",
                 table: "Bases");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Materials_Categories_CategoryId",
+                table: "Materials");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Recipes_Categories_CategoryId",
+                table: "Recipes");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Materials_Images_MaterialImageId",
+                table: "Materials");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Recipes_Images_ImageId",
+                table: "Recipes");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_RecipeIngredients_Materials_MaterialId",
+                table: "RecipeIngredients");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_RecipeIngredients_Recipes_RecipeId",
+                table: "RecipeIngredients");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -449,13 +511,7 @@ namespace RustStashServer.Core.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Recipes");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "RecipeIngredients");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
@@ -467,13 +523,22 @@ namespace RustStashServer.Core.Migrations
                 name: "Bases");
 
             migrationBuilder.DropTable(
-                name: "Materials");
+                name: "StashItemType");
 
             migrationBuilder.DropTable(
                 name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Images");
+
+            migrationBuilder.DropTable(
+                name: "Materials");
+
+            migrationBuilder.DropTable(
+                name: "Recipes");
+
+            migrationBuilder.DropTable(
+                name: "RecipeIngredients");
         }
     }
 }
