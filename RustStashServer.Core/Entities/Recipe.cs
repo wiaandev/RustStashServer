@@ -24,7 +24,7 @@ public class Recipe
     public string? Description { get; set; }
 
     [ForeignKey("ImageId")]
-    public Image? Image { get; set; } = null;
+    public string? RecipeImage { get; set; } = null;
 
     public int ImageId { get; set; }
 

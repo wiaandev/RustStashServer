@@ -37,7 +37,8 @@ namespace RustStashServer.Core.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Username = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
-                    ProfileImage = table.Column<int>(type: "integer", nullable: false),
+                    UserImage = table.Column<string>(type: "text", nullable: false),
+                    ImageId = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Deleted = table.Column<bool>(type: "boolean", nullable: false),
@@ -72,19 +73,6 @@ namespace RustStashServer.Core.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.CategoryId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    ImageId = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ImageString = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Images", x => x.ImageId);
                 });
 
             migrationBuilder.CreateTable(
@@ -212,7 +200,7 @@ namespace RustStashServer.Core.Migrations
                 {
                     MaterialId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    MaterialImageId = table.Column<int>(type: "integer", nullable: false),
+                    MaterialImage = table.Column<string>(type: "text", nullable: true),
                     MaterialDescription = table.Column<string>(type: "text", nullable: true),
                     CategoryId = table.Column<int>(type: "integer", nullable: false),
                     MaterialIsCraftable = table.Column<bool>(type: "boolean", nullable: false)
@@ -225,12 +213,6 @@ namespace RustStashServer.Core.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Materials_Images_MaterialImageId",
-                        column: x => x.MaterialImageId,
-                        principalTable: "Images",
-                        principalColumn: "ImageId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -320,6 +302,7 @@ namespace RustStashServer.Core.Migrations
                     RecipeIngredientId = table.Column<int>(type: "integer", nullable: false),
                     CategoryId = table.Column<int>(type: "integer", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
+                    RecipeImage = table.Column<string>(type: "text", nullable: true),
                     ImageId = table.Column<int>(type: "integer", nullable: false),
                     RequiredBenchLevel = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -331,12 +314,6 @@ namespace RustStashServer.Core.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Recipes_Images_ImageId",
-                        column: x => x.ImageId,
-                        principalTable: "Images",
-                        principalColumn: "ImageId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Recipes_RecipeIngredients_RecipeIngredientId",
@@ -394,11 +371,6 @@ namespace RustStashServer.Core.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Materials_MaterialImageId",
-                table: "Materials",
-                column: "MaterialImageId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_RecipeIngredients_MaterialId",
                 table: "RecipeIngredients",
                 column: "MaterialId");
@@ -412,11 +384,6 @@ namespace RustStashServer.Core.Migrations
                 name: "IX_Recipes_CategoryId",
                 table: "Recipes",
                 column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Recipes_ImageId",
-                table: "Recipes",
-                column: "ImageId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Recipes_RecipeIngredientId",
@@ -480,14 +447,6 @@ namespace RustStashServer.Core.Migrations
                 table: "Recipes");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Materials_Images_MaterialImageId",
-                table: "Materials");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Recipes_Images_ImageId",
-                table: "Recipes");
-
-            migrationBuilder.DropForeignKey(
                 name: "FK_RecipeIngredients_Materials_MaterialId",
                 table: "RecipeIngredients");
 
@@ -527,9 +486,6 @@ namespace RustStashServer.Core.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "Materials");

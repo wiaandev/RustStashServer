@@ -8,5 +8,5 @@ public class UserInput
 
     public DateTime DateOfBirth { get; set; }
 
-    public int ProfilePicture { get; set; }
+    public string UserImage { get; set; }
 }

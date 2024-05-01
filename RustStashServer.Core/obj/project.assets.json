@@ -11834,19 +11834,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/wiaanduvenhage/.nuget/packages/": {}
+    "/Users/charleneferreira/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj",
+      "projectUniqueName": "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj",
       "projectName": "RustStashServer.Core",
-      "projectPath": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj",
-      "packagesPath": "/Users/wiaanduvenhage/.nuget/packages/",
-      "outputPath": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.Core/obj/",
+      "projectPath": "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj",
+      "packagesPath": "/Users/charleneferreira/.nuget/packages/",
+      "outputPath": "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.Core/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/wiaanduvenhage/.nuget/NuGet/NuGet.Config"
+        "/Users/charleneferreira/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -12011,7 +12011,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

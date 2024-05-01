@@ -14,8 +14,9 @@
 
         public string Email { get; set; } = null!;
 
-        [ForeignKey(nameof(Image))]
-        public int ProfileImage { get; set; }
+        public string UserImage { get; set; } = null!;
+
+        public int ImageId { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }

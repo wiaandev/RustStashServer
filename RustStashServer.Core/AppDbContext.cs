@@ -20,8 +20,6 @@ namespace RustStashServer.Core
 
         public DbSet<Category> Categories => this.Set<Category>();
 
-        public DbSet<Image> Images => this.Set<Image>();
-
         public DbSet<Material> Materials => this.Set<Material>();
 
         public DbSet<Recipe> Recipes => this.Set<Recipe>();

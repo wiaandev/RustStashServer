@@ -33,7 +33,7 @@ namespace RustStashServer.Core.Services
             var email = input.UserInput.Email;
             var username = input.UserInput.Username;
             var dob = input.UserInput.DateOfBirth;
-            var profilePicture = input.UserInput.ProfilePicture;
+            var userImage = input.UserInput.UserImage;
 
             var user = new User
             {
@@ -51,7 +51,7 @@ namespace RustStashServer.Core.Services
                 // UserId = 0,
                 Username = username,
                 Email = email,
-                ProfileImage = profilePicture,
+                UserImage = userImage,
                 CreatedAt = DateTime.Now,
                 DateOfBirth = dob
             };

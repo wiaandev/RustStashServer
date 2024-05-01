@@ -12,7 +12,7 @@ using RustStashServer.Core;
 namespace RustStashServer.Core.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240430193204_InitialCreate")]
+    [Migration("20240501132255_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -190,6 +190,9 @@ namespace RustStashServer.Core.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
+                    b.Property<int>("ImageId")
+                        .HasColumnType("integer");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
 
@@ -213,9 +216,6 @@ namespace RustStashServer.Core.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("ProfileImage")
-                        .HasColumnType("integer");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
 
@@ -230,6 +230,10 @@ namespace RustStashServer.Core.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UserId"));
+
+                    b.Property<string>("UserImage")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -291,22 +295,6 @@ namespace RustStashServer.Core.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("RustStashServer.Core.Entities.Image", b =>
-                {
-                    b.Property<int>("ImageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ImageId"));
-
-                    b.Property<string>("ImageString")
-                        .HasColumnType("text");
-
-                    b.HasKey("ImageId");
-
-                    b.ToTable("Images");
-                });
-
             modelBuilder.Entity("RustStashServer.Core.Entities.Material", b =>
                 {
                     b.Property<int>("MaterialId")
@@ -321,8 +309,8 @@ namespace RustStashServer.Core.Migrations
                     b.Property<string>("MaterialDescription")
                         .HasColumnType("text");
 
-                    b.Property<int>("MaterialImageId")
-                        .HasColumnType("integer");
+                    b.Property<string>("MaterialImage")
+                        .HasColumnType("text");
 
                     b.Property<bool>("MaterialIsCraftable")
                         .HasColumnType("boolean");
@@ -330,8 +318,6 @@ namespace RustStashServer.Core.Migrations
                     b.HasKey("MaterialId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("MaterialImageId");
 
                     b.ToTable("Materials");
                 });
@@ -353,6 +339,9 @@ namespace RustStashServer.Core.Migrations
                     b.Property<int>("ImageId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("RecipeImage")
+                        .HasColumnType("text");
+
                     b.Property<int>("RecipeIngredientId")
                         .HasColumnType("integer");
 
@@ -365,8 +354,6 @@ namespace RustStashServer.Core.Migrations
                     b.HasKey("RecipeId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("ImageId");
 
                     b.HasIndex("RecipeIngredientId");
 
@@ -521,15 +508,7 @@ namespace RustStashServer.Core.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RustStashServer.Core.Entities.Image", "Image")
-                        .WithMany()
-                        .HasForeignKey("MaterialImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Category");
-
-                    b.Navigation("Image");
                 });
 
             modelBuilder.Entity("RustStashServer.Core.Entities.Recipe", b =>
@@ -540,12 +519,6 @@ namespace RustStashServer.Core.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RustStashServer.Core.Entities.Image", "Image")
-                        .WithMany()
-                        .HasForeignKey("ImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("RustStashServer.Core.Entities.RecipeIngredient", "RecipeIngredient")
                         .WithMany()
                         .HasForeignKey("RecipeIngredientId")
@@ -553,8 +526,6 @@ namespace RustStashServer.Core.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
-
-                    b.Navigation("Image");
 
                     b.Navigation("RecipeIngredient");
                 });

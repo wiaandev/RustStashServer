@@ -10,10 +10,7 @@ public class Material
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int MaterialId { get; set; }
 
-    [ForeignKey("MaterialImageId")]
-    public Image? Image { get; set; } = null!;
-
-    public int MaterialImageId { get; set; }
+    public string? MaterialImage { get; set; } = null!;
 
     public string? MaterialDescription { get; set; } = null!;
 
