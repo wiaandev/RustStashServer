@@ -1,9 +1,7 @@
+namespace RustStashServer.Seed;
 using RustStashServer.Core;
 using RustStashServer.Core.Entities.Auth;
 using RustStashServer.Core.Services;
-
-namespace RustStashServer.Seed;
-
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -39,6 +37,7 @@ public class Program
                 });
 
                 services.AddSingleton<SeedService>();
+
                 // services.AddAuth(context.Configuration);
                 // services.AddCoreServices();
             });
@@ -49,11 +48,14 @@ public class Program
         // sessionContext.PartyId = 1;
 
         var userManager = services.GetRequiredService<UserManager<User>>();
+
         // var roleManager = services.GetRequiredService<RoleManager<Role>>();
         var passwordHasher = services.GetRequiredService<IPasswordHasher<User>>();
+
         // var teamService = services.GetRequiredService<TeamService>();
         // var expenseService = services.GetRequiredService<ExpenseService>();
         var userService = services.GetRequiredService<UserService>();
+
         // var saleService = services.GetRequiredService<SaleService>();
         // var budgetModelService = services.GetRequiredService<BudgetModelService>();
 

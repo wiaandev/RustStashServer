@@ -6,7 +6,7 @@ public class UserInput
 
     public string Email { get; set; } = null!;
 
-    public DateTime DateOfBirth { get; set; }
+    public DateOnly DateOfBirth { get; set; }
 
     public string UserImage { get; set; }
 }

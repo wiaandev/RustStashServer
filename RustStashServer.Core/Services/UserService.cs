@@ -29,7 +29,6 @@ namespace RustStashServer.Core.Services
                 throw new Exception("User Details are required");
             }
 
-
             var email = input.UserInput.Email;
             var username = input.UserInput.Username;
             var dob = input.UserInput.DateOfBirth;
@@ -38,17 +37,17 @@ namespace RustStashServer.Core.Services
             var user = new User
             {
                 UserName = username,
-                // EmailConfirmed = false,
-                // PasswordHash = null,
-                // SecurityStamp = null,
-                // ConcurrencyStamp = null,
-                // PhoneNumber = null,
-                // PhoneNumberConfirmed = false,
-                // TwoFactorEnabled = false,
-                // LockoutEnd = null,
-                // LockoutEnabled = false,
-                // AccessFailedCount = 0,
-                // UserId = 0,
+                EmailConfirmed = false,
+                PasswordHash = null,
+                SecurityStamp = null,
+                ConcurrencyStamp = null,
+                PhoneNumber = null,
+                PhoneNumberConfirmed = false,
+                TwoFactorEnabled = false,
+                LockoutEnd = null,
+                LockoutEnabled = false,
+                AccessFailedCount = 0,
+                UserId = 0,
                 Username = username,
                 Email = email,
                 UserImage = userImage,
@@ -62,7 +61,5 @@ namespace RustStashServer.Core.Services
             await dbContext.SaveChangesAsync();
             return user;
         }
-        
-        
     }
 }

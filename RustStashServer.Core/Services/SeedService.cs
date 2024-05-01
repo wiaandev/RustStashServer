@@ -34,7 +34,7 @@ public class SeedService
                 Email = "wiaan@gmail.com",
                 UserImage = "https://picsum.photos/200/300",
                 CreatedAt = DateTime.Now,
-                DateOfBirth = new DateTime(2000, 6, 16),
+                DateOfBirth = new DateOnly(2000, 6, 16),
             },
             new()
             {
@@ -47,7 +47,7 @@ public class SeedService
                 Email = "charlene@gmail.com",
                 UserImage = "https://picsum.photos/200/300",
                 CreatedAt = DateTime.Now,
-                DateOfBirth = new DateTime(2001, 5, 6),
+                DateOfBirth = new DateOnly(2001, 5, 6),
             },
         };
     }
