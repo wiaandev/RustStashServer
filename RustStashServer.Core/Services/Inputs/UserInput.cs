@@ -8,5 +8,5 @@ public class UserInput
 
     public DateOnly DateOfBirth { get; set; }
 
-    public string UserImage { get; set; }
+    public string? UserImage { get; set; } = null!;
 }

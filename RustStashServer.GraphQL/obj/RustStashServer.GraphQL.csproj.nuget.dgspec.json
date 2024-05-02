@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.GraphQL/RustStashServer.GraphQL.csproj": {}
+    "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.GraphQL/RustStashServer.GraphQL.csproj": {}
   },
   "projects": {
-    "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj": {
+    "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj",
+        "projectUniqueName": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj",
         "projectName": "RustStashServer.Core",
-        "projectPath": "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj",
-        "packagesPath": "/Users/charleneferreira/.nuget/packages/",
-        "outputPath": "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.Core/obj/",
+        "projectPath": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj",
+        "packagesPath": "/Users/wiaanduvenhage/.nuget/packages/",
+        "outputPath": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/charleneferreira/.nuget/NuGet/NuGet.Config"
+          "/Users/wiaanduvenhage/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -179,21 +174,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.GraphQL/RustStashServer.GraphQL.csproj": {
+    "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.GraphQL/RustStashServer.GraphQL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.GraphQL/RustStashServer.GraphQL.csproj",
+        "projectUniqueName": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.GraphQL/RustStashServer.GraphQL.csproj",
         "projectName": "RustStashServer.GraphQL",
-        "projectPath": "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.GraphQL/RustStashServer.GraphQL.csproj",
-        "packagesPath": "/Users/charleneferreira/.nuget/packages/",
-        "outputPath": "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.GraphQL/obj/",
+        "projectPath": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.GraphQL/RustStashServer.GraphQL.csproj",
+        "packagesPath": "/Users/wiaanduvenhage/.nuget/packages/",
+        "outputPath": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.GraphQL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/charleneferreira/.nuget/NuGet/NuGet.Config"
+          "/Users/wiaanduvenhage/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -205,8 +200,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj": {
-                "projectPath": "/Users/charleneferreira/Desktop/GitHub/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj"
+              "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj": {
+                "projectPath": "/Users/wiaanduvenhage/Desktop/RustStashServer/RustStashServer.Core/RustStashServer.Core.csproj"
               }
             }
           }
@@ -215,11 +210,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -362,7 +352,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

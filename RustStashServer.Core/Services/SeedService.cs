@@ -1,7 +1,10 @@
+using RustStashServer.Core.Entities;
+
+namespace RustStashServer.Core.Services;
+
 using Microsoft.AspNetCore.Identity;
 using RustStashServer.Core.Entities.Auth;
 
-namespace RustStashServer.Core.Services;
 
 public class SeedService
 {
@@ -9,10 +12,13 @@ public class SeedService
         AppDbContext dbContext,
         UserManager<User> userManager,
         IPasswordHasher<User> passwordHasher,
+        RoleManager<Role> roleManager,
         UserService userService,
         string scenario)
     {
         await CreateUsers(dbContext, userManager, passwordHasher, scenario);
+        await CreateRoles(dbContext, roleManager);
+        await CreateCategories(dbContext);
     }
 
     private static async Task CreateUsers(
@@ -50,6 +56,95 @@ public class SeedService
                 DateOfBirth = new DateOnly(2001, 5, 6),
             },
         };
+
+        await dbContext.SaveChangesAsync();
     }
-    
+
+    private static async Task CreateRoles(AppDbContext dbContext, RoleManager<Role> roleManager)
+    {
+        var roles = new List<Role>
+        {
+            new()
+            {
+                Name = RoleEnum.User.ToString(),
+            },
+            new Role()
+            {
+                Name = RoleEnum.Admin.ToString(),
+            },
+        };
+        foreach (var role in roles)
+        {
+            await roleManager.CreateAsync(role);
+        }
+
+        await dbContext.SaveChangesAsync();
+    }
+
+    private async Task CreateCategories(AppDbContext dbContext)
+    {
+        var categories = new List<Category>()
+        {
+            new()
+            {
+                CategoryId = 0,
+                CategoryName = "Construction",
+            },
+            new()
+            {
+                CategoryId = 1,
+                CategoryName = "Crafting",
+            },
+            new()
+            {
+                CategoryId = 2,
+                CategoryName = "Food"
+            },
+            new()
+            {
+                CategoryId = 3,
+                CategoryName = "Tools"
+            },
+            new()
+            {
+                CategoryId = 4,
+                CategoryName = "Ammunition"
+            },
+            new()
+            {
+                CategoryId = 5,
+                CategoryName = "Resources"
+            },
+        };
+
+        foreach (var item in categories)
+        {
+            // TODO: add service method that adds categories
+            // catService.AddCategory(){}
+        }
+
+        await dbContext.SaveChangesAsync();
+    }
+
+    private static async Task CreateMaterials(AppDbContext dbContext, MaterialService matService)
+    {
+        var materials = new List<Material>()
+        {
+            new()
+            {
+                MaterialId = 0,
+                MaterialImage = null,
+                MaterialDescription = null,
+                Category = new Category
+                {
+                    CategoryId = 1,
+                    CategoryName = "Crafting",
+                },
+                CategoryId = 0,
+                MaterialIsCraftable = false
+            }
+        };
+
+        await dbContext.SaveChangesAsync();
+    }
 }
