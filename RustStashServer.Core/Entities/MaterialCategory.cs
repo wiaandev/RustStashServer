@@ -7,6 +7,8 @@ public class MaterialCategory
     public Material Material { get; set; }
 
     public int CategoryIds { get; set; }
+    
+    // test
 
     public Category Category { get; set; }
 }
