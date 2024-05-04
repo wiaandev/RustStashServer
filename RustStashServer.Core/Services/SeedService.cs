@@ -135,13 +135,19 @@ public class SeedService
                 MaterialId = 0,
                 MaterialImage = null,
                 MaterialDescription = null,
-                Category = new Category
+                MaterialCategories = new List<MaterialCategory>
                 {
-                    CategoryId = 1,
-                    CategoryName = "Crafting",
+                    Capacity = 3
                 },
-                CategoryId = 0,
-                MaterialIsCraftable = false
+                MaterialIsCraftable = false,
+                RecipeMaterials = new List<RecipeMaterial>
+                {
+                    Capacity = 2
+                },
+                UserStashMaterials = new List<UserStashMaterial>
+                {
+                    Capacity = 1
+                }
             }
         };
 

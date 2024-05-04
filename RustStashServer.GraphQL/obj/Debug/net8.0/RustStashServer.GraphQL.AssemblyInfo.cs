@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RustStashServer.GraphQL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58e3de2b3bf7f150d2b9703a9947e479d008efe2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b376dca97ae55f49c96ea6e9d5f99d16b2cf1c8")]
 [assembly: System.Reflection.AssemblyProductAttribute("RustStashServer.GraphQL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RustStashServer.GraphQL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

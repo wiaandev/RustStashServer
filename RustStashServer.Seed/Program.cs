@@ -49,7 +49,7 @@ public class Program
 
         var userManager = services.GetRequiredService<UserManager<User>>();
 
-        // var roleManager = services.GetRequiredService<RoleManager<Role>>();
+        var roleManager = services.GetRequiredService<RoleManager<Role>>();
         var passwordHasher = services.GetRequiredService<IPasswordHasher<User>>();
 
         // var teamService = services.GetRequiredService<TeamService>();
@@ -62,7 +62,7 @@ public class Program
         var seedService = services.GetRequiredService<SeedService>();
         await using (var dbContext = await services.GetRequiredService<IDbContextFactory<AppDbContext>>().CreateDbContextAsync())
         {
-            await seedService.Seed(dbContext, userManager, passwordHasher, userService, "dev");
+            await seedService.Seed(dbContext, userManager, passwordHasher, roleManager, userService, "dev");
         }
     }
 }

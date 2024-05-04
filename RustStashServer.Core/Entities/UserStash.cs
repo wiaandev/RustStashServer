@@ -11,25 +11,9 @@ public class UserStash
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int UserStashId { get; set; }
 
-    [ForeignKey("MaterialId")]
-    public Material? Material { get; set; } = null;
+    public Base Base { get; set; } = null!;
 
-    public int MaterialId { get; set; }
+    public StashItemType StashItemType { get; set; } = null!;
 
-    [ForeignKey("UserId")]
-    public User? User { get; set; } = null;
-
-    public int UserId { get; set; }
-
-    public int? Quantity { get; set; } = null!;
-
-    [ForeignKey("BaseId")]
-    public Base? Base { get; set; } = null!;
-
-    public int BaseId { get; set; }
-
-    [ForeignKey("ItemTypeId")]
-    public StashItemType? StashItemType { get; set; } = null!;
-
-    public int UserStashItemTypeId { get; set; }
+    public IList<UserStashMaterial> UserStashMaterials { get; set; }
 }

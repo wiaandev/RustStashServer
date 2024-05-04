@@ -9,24 +9,15 @@ public class Recipe
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int RecipeId { get; set; }
 
-    public string? RecipeName { get; set; }
+    public string RecipeName { get; set; } = null!;
 
-    [ForeignKey("RecipeIngredientId")]
-    public RecipeIngredient? RecipeIngredient { get; set; } = null;
+    public IList<RecipeMaterial> RecipeMaterials { get; set; } = null;
 
-    public int RecipeIngredientId { get; set; }
-
-    [ForeignKey("CategoryId")]
     public Category? Category { get; set; } = null!;
 
-    public int CategoryId { get; set; }
+    public string Description { get; set; } = null!;
 
-    public string? Description { get; set; }
-
-    [ForeignKey("ImageId")]
-    public string? RecipeImage { get; set; } = null;
-
-    public int ImageId { get; set; }
+    public string RecipeImage { get; set; } = null!;
 
     public int RequiredBenchLevel { get; set; }
 }

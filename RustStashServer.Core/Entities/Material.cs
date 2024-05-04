@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace RustStashServer.Core.Entities;
 
 using System.ComponentModel.DataAnnotations;
@@ -10,14 +12,16 @@ public class Material
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int MaterialId { get; set; }
 
-    public string? MaterialImage { get; set; } = null!;
+    public string MaterialImage { get; set; } = null!;
 
-    public string? MaterialDescription { get; set; } = null!;
-
-    [ForeignKey("CategoryId")]
-    public Category? Category { get; set; } = null!;
-
-    public int CategoryId { get; set; }
+    public string MaterialDescription { get; set; } = null!;
 
     public bool MaterialIsCraftable { get; set; }
+
+    public IList<MaterialCategory> MaterialCategories { get; set; } = null!;
+
+    public IList<RecipeMaterial> RecipeMaterials { get; set; }
+
+    public IList<UserStashMaterial> UserStashMaterials { get; set; }
+
 }

@@ -9,5 +9,5 @@ public class StashItemType
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int StashItemTypeId { get; set; }
 
-    public string? StashItemTypeName { get; set; } = null!;
+    public string StashItemTypeName { get; set; } = null!;
 }

@@ -9,12 +9,9 @@ public class Base
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int BaseId { get; set; }
 
-    public string? Latitude { get; set; } = null!;
+    public string Latitude { get; set; } = null!;
 
-    public string? Longitude { get; set; } = null!;
+    public string Longitude { get; set; } = null!;
 
-    [ForeignKey("UserStashId")]
-    public UserStash UserStash { get; set; } = null!;
-
-    public int UserStashId { get; set; }
+    public UserStash BaseUserStashId { get; set; } = null!;
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RustStashServer.Core;
@@ -11,9 +12,11 @@ using RustStashServer.Core;
 namespace RustStashServer.Core.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240504114253_ChangedTableAttribute231234567io")]
+    partial class ChangedTableAttribute231234567io
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -316,25 +319,25 @@ namespace RustStashServer.Core.Migrations
 
             modelBuilder.Entity("RustStashServer.Core.Entities.MaterialCategory", b =>
                 {
-                    b.Property<int>("MaterialIds")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("CategoryIds")
+                    b.Property<int>("MaterialId")
                         .HasColumnType("integer");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("MaterialId")
+                    b.Property<int>("CategoryId1")
                         .HasColumnType("integer");
 
-                    b.HasKey("MaterialIds", "CategoryIds");
+                    b.Property<int>("MaterialId1")
+                        .HasColumnType("integer");
+
+                    b.HasKey("MaterialId", "CategoryId");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("CategoryIds");
+                    b.HasIndex("CategoryId1");
 
-                    b.HasIndex("MaterialId");
+                    b.HasIndex("MaterialId1");
 
                     b.ToTable("MaterialCategory");
                 });
@@ -374,25 +377,25 @@ namespace RustStashServer.Core.Migrations
 
             modelBuilder.Entity("RustStashServer.Core.Entities.RecipeMaterial", b =>
                 {
-                    b.Property<int>("RecipeIds")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("MaterialIds")
+                    b.Property<int>("RecipeId")
                         .HasColumnType("integer");
 
                     b.Property<int>("MaterialId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("RecipeId")
+                    b.Property<int>("MaterialId1")
                         .HasColumnType("integer");
 
-                    b.HasKey("RecipeIds", "MaterialIds");
+                    b.Property<int>("RecipeId1")
+                        .HasColumnType("integer");
+
+                    b.HasKey("RecipeId", "MaterialId");
 
                     b.HasIndex("MaterialId");
 
-                    b.HasIndex("MaterialIds");
+                    b.HasIndex("MaterialId1");
 
-                    b.HasIndex("RecipeId");
+                    b.HasIndex("RecipeId1");
 
                     b.ToTable("RecipeIngredients");
                 });
@@ -432,28 +435,28 @@ namespace RustStashServer.Core.Migrations
 
             modelBuilder.Entity("RustStashServer.Core.Entities.UserStashMaterial", b =>
                 {
-                    b.Property<int>("UserStashIds")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("MaterialIds")
+                    b.Property<int>("UserStashId")
                         .HasColumnType("integer");
 
                     b.Property<int>("MaterialId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserStashId")
+                    b.Property<int>("MaterialId1")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserStashId1")
                         .HasColumnType("integer");
 
                     b.Property<int>("UserStashMaterialOwnerId")
                         .HasColumnType("integer");
 
-                    b.HasKey("UserStashIds", "MaterialIds");
+                    b.HasKey("UserStashId", "MaterialId");
 
                     b.HasIndex("MaterialId");
 
-                    b.HasIndex("MaterialIds");
+                    b.HasIndex("MaterialId1");
 
-                    b.HasIndex("UserStashId");
+                    b.HasIndex("UserStashId1");
 
                     b.HasIndex("UserStashMaterialOwnerId");
 
@@ -513,27 +516,27 @@ namespace RustStashServer.Core.Migrations
 
             modelBuilder.Entity("RustStashServer.Core.Entities.MaterialCategory", b =>
                 {
-                    b.HasOne("RustStashServer.Core.Entities.Category", "Category")
-                        .WithMany()
+                    b.HasOne("RustStashServer.Core.Entities.Category", null)
+                        .WithMany("MaterialCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RustStashServer.Core.Entities.Category", null)
-                        .WithMany("MaterialCategories")
-                        .HasForeignKey("CategoryIds")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RustStashServer.Core.Entities.Material", "Material")
+                    b.HasOne("RustStashServer.Core.Entities.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("MaterialId")
+                        .HasForeignKey("CategoryId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("RustStashServer.Core.Entities.Material", null)
                         .WithMany("MaterialCategories")
-                        .HasForeignKey("MaterialIds")
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RustStashServer.Core.Entities.Material", "Material")
+                        .WithMany()
+                        .HasForeignKey("MaterialId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -553,27 +556,27 @@ namespace RustStashServer.Core.Migrations
 
             modelBuilder.Entity("RustStashServer.Core.Entities.RecipeMaterial", b =>
                 {
-                    b.HasOne("RustStashServer.Core.Entities.Material", "Material")
-                        .WithMany()
+                    b.HasOne("RustStashServer.Core.Entities.Material", null)
+                        .WithMany("RecipeMaterials")
                         .HasForeignKey("MaterialId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RustStashServer.Core.Entities.Material", null)
-                        .WithMany("RecipeMaterials")
-                        .HasForeignKey("MaterialIds")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RustStashServer.Core.Entities.Recipe", "Recipe")
+                    b.HasOne("RustStashServer.Core.Entities.Material", "Material")
                         .WithMany()
-                        .HasForeignKey("RecipeId")
+                        .HasForeignKey("MaterialId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("RustStashServer.Core.Entities.Recipe", null)
                         .WithMany("RecipeMaterials")
-                        .HasForeignKey("RecipeIds")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RustStashServer.Core.Entities.Recipe", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("RecipeId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -603,27 +606,27 @@ namespace RustStashServer.Core.Migrations
 
             modelBuilder.Entity("RustStashServer.Core.Entities.UserStashMaterial", b =>
                 {
-                    b.HasOne("RustStashServer.Core.Entities.Material", "Material")
-                        .WithMany()
+                    b.HasOne("RustStashServer.Core.Entities.Material", null)
+                        .WithMany("UserStashMaterials")
                         .HasForeignKey("MaterialId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RustStashServer.Core.Entities.Material", null)
-                        .WithMany("UserStashMaterials")
-                        .HasForeignKey("MaterialIds")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RustStashServer.Core.Entities.UserStash", "UserStash")
+                    b.HasOne("RustStashServer.Core.Entities.Material", "Material")
                         .WithMany()
-                        .HasForeignKey("UserStashId")
+                        .HasForeignKey("MaterialId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("RustStashServer.Core.Entities.UserStash", null)
                         .WithMany("UserStashMaterials")
-                        .HasForeignKey("UserStashIds")
+                        .HasForeignKey("UserStashId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RustStashServer.Core.Entities.UserStash", "UserStash")
+                        .WithMany()
+                        .HasForeignKey("UserStashId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

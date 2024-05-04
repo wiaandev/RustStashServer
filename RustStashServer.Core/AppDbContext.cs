@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿namespace RustStashServer.Core;
+
+
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using RustStashServer.Core.Entities;
 using RustStashServer.Core.Entities.Auth;
 
-
-namespace RustStashServer.Core
-{
     public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public AppDbContext(DbContextOptions options)
@@ -24,17 +24,58 @@ namespace RustStashServer.Core
 
         public DbSet<Recipe> Recipes => this.Set<Recipe>();
 
-        public DbSet<RecipeIngredient> RecipeIngredients => this.Set<RecipeIngredient>();
+        public DbSet<RecipeMaterial> RecipeIngredients => this.Set<RecipeMaterial>();
 
         public DbSet<UserStash> UserStashes => this.Set<UserStash>();
 
+        public DbSet<UserStashMaterial> UserStashMaterials => this.Set<UserStashMaterial>();
 
-        // protected override void OnModelCreating(ModelBuilder builder)
-        // {
-        //     base.OnModelCreating(builder);
-        //     builder.Entity<Base>()
-        //         .HasMany(UserStashes.)
-        // }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Base>()
+                .HasOne<UserStash>(b => b.BaseUserStashId)
+                .WithOne(us => us.Base)
+                .HasForeignKey<UserStash>(us => us.UserStashId);
+
+            builder.Entity<MaterialCategory>().HasKey(mc => new { mc.MaterialIds, mc.CategoryIds });
+
+            builder.Entity<MaterialCategory>()
+                .HasOne<Category>()
+                .WithMany(c => c.MaterialCategories)
+                .HasForeignKey(cm => cm.CategoryIds);
+
+            builder.Entity<MaterialCategory>()
+                .HasOne<Material>()
+                .WithMany(c => c.MaterialCategories)
+                .HasForeignKey(cm => cm.MaterialIds);
+
+            builder.Entity<RecipeMaterial>().HasKey(ri => new { ri.RecipeIds, ri.MaterialIds });
+
+            builder.Entity<RecipeMaterial>()
+                .HasOne<Recipe>()
+                .WithMany(ri => ri.RecipeMaterials)
+                .HasForeignKey(ri => ri.RecipeIds);
+
+            builder.Entity<RecipeMaterial>()
+                .HasOne<Material>()
+                .WithMany(ri => ri.RecipeMaterials)
+                .HasForeignKey(ri => ri.MaterialIds);
+
+            builder.Entity<UserStashMaterial>().HasKey(um => new { um.UserStashIds, um.MaterialIds });
+
+            builder.Entity<UserStashMaterial>()
+                .HasOne<UserStash>()
+                .WithMany(um => um.UserStashMaterials)
+                .HasForeignKey(um => um.UserStashIds);
+
+            builder.Entity<UserStashMaterial>()
+                .HasOne<Material>()
+                .WithMany(um => um.UserStashMaterials)
+                .HasForeignKey(um => um.MaterialIds);
+
+        }
 
         // protected override void ConfigureConventions(ModelConfigurationBuilder builder)
         // {
@@ -43,4 +84,3 @@ namespace RustStashServer.Core
         // }
 
     }
-}

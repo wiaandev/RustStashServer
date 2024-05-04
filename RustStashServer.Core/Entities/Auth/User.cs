@@ -26,5 +26,7 @@
         public bool Deleted { get; set; }
 
         public int TotalItemsCrafted { get; set; }
+
+        public IList<UserStashMaterial> UserStashMaterials { get; set; }
     }
 
