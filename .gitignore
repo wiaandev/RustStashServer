@@ -5,6 +5,7 @@ project.lock.json
 *.pyc
 RustStashServer.Core/appsettings.json
 nupkg/
+*.git
 
 node_modules
 

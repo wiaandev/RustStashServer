@@ -33,12 +33,11 @@ public static class IServiceCollectionExtensions
             .AddClaimsPrincipalFactory<CustomUserClaimsPrincipalFactory>()
             .AddDefaultTokenProviders();
 
-        // TODO: Add Google SSO
         services.AddAuthentication()
             .AddGoogle(opts =>
             {
-                opts.ClientId = configuration["Authentication:Google:ClientId"]!;
-                opts.ClientSecret = configuration["Authentication:Google:ClientSecret"]!;
+                opts.ClientId = configuration["Authentication:Google:ClientId"] !;
+                opts.ClientSecret = configuration["Authentication:Google:ClientSecret"] !;
             });
     }
 }
