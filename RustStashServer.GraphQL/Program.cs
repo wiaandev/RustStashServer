@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddGraphQLServer()
-    .RegisterDbContext<AppDbContext>()
+    .RegisterDbContext<RustStashDbContext>()
     .AddQueryType<Query>();
 
 var app = builder.Build();

@@ -9,7 +9,7 @@ using RustStashServer.Core.Entities.Auth;
 public class SeedService
 {
     public async Task Seed(
-        AppDbContext dbContext,
+        RustStashDbContext dbContext,
         UserManager<User> userManager,
         IPasswordHasher<User> passwordHasher,
         RoleManager<Role> roleManager,
@@ -22,7 +22,7 @@ public class SeedService
     }
 
     private static async Task CreateUsers(
-        AppDbContext dbContext,
+        RustStashDbContext dbContext,
         UserManager<User> userManager,
         IPasswordHasher<User> passwordHasher,
         string scenario)
@@ -60,7 +60,7 @@ public class SeedService
         await dbContext.SaveChangesAsync();
     }
 
-    private static async Task CreateRoles(AppDbContext dbContext, RoleManager<Role> roleManager)
+    private static async Task CreateRoles(RustStashDbContext dbContext, RoleManager<Role> roleManager)
     {
         var roles = new List<Role>
         {
@@ -81,7 +81,7 @@ public class SeedService
         await dbContext.SaveChangesAsync();
     }
 
-    private async Task CreateCategories(AppDbContext dbContext)
+    private async Task CreateCategories(RustStashDbContext dbContext)
     {
         var categories = new List<Category>()
         {
@@ -126,7 +126,7 @@ public class SeedService
         await dbContext.SaveChangesAsync();
     }
 
-    private static async Task CreateMaterials(AppDbContext dbContext, MaterialService matService)
+    private static async Task CreateMaterials(RustStashDbContext dbContext, MaterialService matService)
     {
         var materials = new List<Material>()
         {

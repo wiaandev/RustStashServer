@@ -17,12 +17,12 @@ namespace RustStashServer.Core.Services
             this.userManager = userManager;
         }
 
-        public IQueryable<User> GetUsers(AppDbContext dbContext)
+        public IQueryable<User> GetUsers(RustStashDbContext dbContext)
         {
             return dbContext.Users.AsQueryable();
         }
 
-        public async Task<User> Create(AppDbContext dbContext, CreateUserInput input)
+        public async Task<User> Create(RustStashDbContext dbContext, CreateUserInput input)
         {
             if (input.UserInput is null)
             {

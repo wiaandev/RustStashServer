@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using RustStashServer.Core.Entities;
 using RustStashServer.Core.Entities.Auth;
 
-    public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int>
+    public class RustStashDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
-        public AppDbContext(DbContextOptions options)
+        public RustStashDbContext(DbContextOptions options)
             : base(options)
         {
         }

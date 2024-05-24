@@ -30,7 +30,7 @@ public class Program
         Host.CreateDefaultBuilder(args)
             .ConfigureServices((context, services) =>
             {
-                services.AddDbContext<AppDbContext>(opts =>
+                services.AddDbContext<RustStashDbContext>(opts =>
                 {
                     IConfiguration config = context.Configuration;
                     opts.UseNpgsql(config.GetConnectionString("WebApiDatabase"));
@@ -60,7 +60,7 @@ public class Program
         // var budgetModelService = services.GetRequiredService<BudgetModelService>();
 
         var seedService = services.GetRequiredService<SeedService>();
-        await using (var dbContext = await services.GetRequiredService<IDbContextFactory<AppDbContext>>().CreateDbContextAsync())
+        await using (var dbContext = await services.GetRequiredService<IDbContextFactory<RustStashDbContext>>().CreateDbContextAsync())
         {
             await seedService.Seed(dbContext, userManager, passwordHasher, roleManager, userService, "dev");
         }

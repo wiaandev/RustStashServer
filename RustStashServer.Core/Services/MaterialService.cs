@@ -12,12 +12,12 @@ public class MaterialService
         this._logger = logger;
     }
 
-    public IQueryable<Material> GetMaterials(AppDbContext dbContext)
+    public IQueryable<Material> GetMaterials(RustStashDbContext dbContext)
     {
         return dbContext.Materials.AsQueryable();
     }
 
-    public async Task<Material> GetSingleMaterial(AppDbContext dbContext, int id)
+    public async Task<Material> GetSingleMaterial(RustStashDbContext dbContext, int id)
     {
         if (dbContext.Materials is null)
         {

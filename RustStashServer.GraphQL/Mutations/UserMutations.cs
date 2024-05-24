@@ -11,7 +11,7 @@ public class UserMutations
 {
     [Authorize(Roles = new[] { "Admin", "User" })]
     public async Task<CreateUserPayload> CreateUserMutation(
-        AppDbContext dbContext,
+        RustStashDbContext dbContext,
         [Service] UserService userService,
         CreateUserInput input)
     {

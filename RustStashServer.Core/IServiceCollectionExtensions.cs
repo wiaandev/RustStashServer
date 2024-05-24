@@ -19,18 +19,26 @@ public static class IServiceCollectionExtensions
 
     public static void AddAuth(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddIdentity<User, Role>()
-            .AddEntityFrameworkStores<AppDbContext>()
+
+        services.AddIdentityCore<User>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+            })
+            .AddEntityFrameworkStores<RustStashDbContext>()
             .AddRoles<Role>()
             .AddClaimsPrincipalFactory<CustomUserClaimsPrincipalFactory>()
             .AddDefaultTokenProviders();
 
         // TODO: Add Google SSO
-        // services.AddAuthentication()
-        //     .AddGoogle(opts =>
-        //     {
-        //         opts.ClientId = configuration["Authentication:Google:ClientId"]!;
-        //         opts.ClientSecret = configuration["Authentication:Google:ClientSecret"]!;
-        //     });
+        services.AddAuthentication()
+            .AddGoogle(opts =>
+            {
+                opts.ClientId = configuration["Authentication:Google:ClientId"]!;
+                opts.ClientSecret = configuration["Authentication:Google:ClientSecret"]!;
+            });
     }
 }

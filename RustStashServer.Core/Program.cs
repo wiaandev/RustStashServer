@@ -13,7 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddHealthChecks();
 
-builder.Services.AddDbContext<AppDbContext>(opts =>
+builder.Services.AddDbContext<RustStashDbContext>(opts =>
 {
     IConfiguration config = builder.Configuration;
     opts.UseNpgsql(config.GetConnectionString("WebApiDatabase"));
