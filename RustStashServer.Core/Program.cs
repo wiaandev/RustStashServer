@@ -16,7 +16,10 @@ builder.Services.AddHealthChecks();
 builder.Services.AddDbContext<RustStashDbContext>(opts =>
 {
     IConfiguration config = builder.Configuration;
-    opts.UseNpgsql(config.GetConnectionString("WebApiDatabase"));
+    opts.UseNpgsql(
+        config.GetConnectionString("WebApiDatabase"),
+        b => b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery));
+    opts.EnableDetailedErrors();
 });
 
 var app = builder.Build();
